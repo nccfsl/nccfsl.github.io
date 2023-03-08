@@ -9,11 +9,9 @@ const timer = document.querySelector(".timer");
 
 boardElement.style.setProperty("--size", BOARD_SIZE);
 
-let windowWidth = window.innerWidth;
-let windowHeight = window.innerHeight;
+resizeBoard();
 
-let minTileSize = Math.floor((Math.min(windowWidth, windowHeight) - (10 + 2*(BOARD_SIZE - 1))) / BOARD_SIZE);
-boardElement.style.setProperty("--tileSize", `${minTileSize}px`);
+addEventListener("resize", (event) => resizeBoard());
 
 let gameStarted = false;
 let gameEnded = false;
@@ -38,6 +36,23 @@ board.forEach(row => {
         });
     });
 });
+
+function resizeBoard() {
+    let windowWidth = window.innerWidth;
+    let windowHeight = window.innerHeight;
+    if (windowWidth > 900) {
+        let actualWidth = windowWidth - document.querySelector(".timer").offsetWidth;
+
+        let minTileSize = Math.floor((Math.min(actualWidth, windowHeight) - (10 + 2*(BOARD_SIZE - 1))) / BOARD_SIZE);
+        boardElement.style.setProperty("--tileSize", `${minTileSize}px`);
+    }
+    else {
+        let actualHeight = windowHeight - document.querySelector(".timer").offsetHeight;
+
+        let minTileSize = Math.floor((Math.min(windowWidth, actualHeight) - (10 + 2*(BOARD_SIZE - 1))) / BOARD_SIZE);
+        boardElement.style.setProperty("--tileSize", `${minTileSize}px`);
+    }
+}
 
 function timeCount() {
     if (!gameEnded) {

@@ -71,6 +71,16 @@ body {
   background-position: center;
 }
 
+@media screen and (max-width: 900px) {
+  .game-container {
+    flex-direction: column;
+  }
+  .timer {
+    padding: 0;
+    text-align: center;
+  }
+}
+
 .one {
   color: blue;
 }
