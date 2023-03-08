@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
+  flex-direction: column;
+  color: white;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.timer {
+  font-family: monospace;
+  font-size: 1em;
+  margin: 0;
+  padding: 0 2em;
+}
+
+.board {
+  display: inline-grid;
+  padding: 5px;
+  grid-template-columns: repeat(var(--size), var(--tileSize));
+  grid-template-rows: repeat(var(--size), var(--tileSize));
+  gap: 2px;
+  background-color: #777;
+  font-size: calc(var(--tileSize) * 0.8);
+  font-weight: bold;
+}
+
+.board > * {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: 1px solid #bbb;
+  user-select: none;
+}
+
+.board > [data-status="hidden"] {
+  background-color: #bbb;
+  cursor: pointer;
+}
+
+.board > [data-status="mine"] {
+  background-image: url('./images/bomb.PNG');
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center;
+}
+
+.board > [data-status="number"] {
+  background-color: none;
+}
+
+.board > [data-status="marked"] {
+  background-color: #bbb;
+  background-image: url('./images/flag.PNG');
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center;
+}
+
+.one {
+  color: blue;
+}
+
+.two {
+  color: green;
+}
+
+.three {
+  color: red;
+}
+
+.four {
+  color: purple;
+}
+
+.five {
+  color: maroon;
+} 
+
+.six {
+  color: teal;
+}
+
+.seven {
+  color: black;
+}
+
+.eight {
+  color: gray;
+}
